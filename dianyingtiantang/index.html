@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电影天堂 在线免费观看-高清电影在线观看_免费影视资源</title>
+<meta name="description" content="电影天堂 在线免费观看为你提供高清电影在线观看入口，汇总免费影视资源分类、热门影片推荐与快速找片方式，帮助影迷轻松找到想看的电影。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d1b2a'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23f5b942' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23f5b942'/%3E%3Ccircle cx='32' cy='12' r='4' fill='%23f5b942'/%3E%3Ccircle cx='32' cy='52' r='4' fill='%23f5b942'/%3E%3Ccircle cx='12' cy='32' r='4' fill='%23f5b942'/%3E%3Ccircle cx='52' cy='32' r='4' fill='%23f5b942'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0b1622;
+    --bg-soft:#111f2f;
+    --panel:#152739;
+    --line:#22374d;
+    --text:#e8eef5;
+    --muted:#9db0c4;
+    --gold:#f5b942;
+    --gold-soft:#ffd27a;
+    --teal:#4fc3b0;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.75;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px;}
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,22,34,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .head-inner{
+    display:flex;align-items:center;gap:18px;
+    padding:14px 0;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.5px;}
+  .brand svg{width:34px;height:34px;flex:none;}
+  .brand .brand-text{
+    font-size:17px;color:var(--gold);
+    line-height:1.3;
+  }
+  nav.mainnav{margin-left:auto;}
+  nav.mainnav ul{list-style:none;display:flex;gap:6px;flex-wrap:wrap;}
+  nav.mainnav a{
+    display:block;padding:6px 12px;border-radius:999px;
+    font-size:14.5px;color:var(--muted);transition:.2s;
+  }
+  nav.mainnav a:hover,nav.mainnav a:focus-visible{color:var(--gold);background:var(--panel);}
+  .nav-toggle{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(circle at 82% 18%, rgba(245,185,66,.16), transparent 46%),
+      radial-gradient(circle at 12% 80%, rgba(79,195,176,.13), transparent 50%),
+      var(--bg-soft);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-inner{
+    display:grid;grid-template-columns:1.25fr .85fr;gap:36px;
+    align-items:center;padding:56px 0 52px;
+  }
+  .hero h1{
+    font-size:clamp(26px,4.2vw,40px);
+    line-height:1.28;font-weight:800;
+    letter-spacing:.5px;margin-bottom:16px;
+  }
+  .hero h1 .hl{color:var(--gold);}
+  .hero p.lead{color:var(--muted);font-size:16px;max-width:34em;margin-bottom:24px;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;border-radius:999px;font-size:15px;font-weight:600;
+    border:1px solid transparent;transition:.2s;cursor:pointer;
+  }
+  .btn-primary{background:var(--gold);color:#1a1206;}
+  .btn-primary:hover{background:var(--gold-soft);}
+  .btn-ghost{border-color:var(--line);color:var(--text);background:transparent;}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+  .btn[aria-disabled="true"]{opacity:.75;cursor:default;pointer-events:none;}
+
+  .hero-visual{
+    display:flex;justify-content:center;align-items:center;
+  }
+  .reel-card{
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:20px;padding:22px;width:100%;max-width:300px;
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
+  }
+  .reel-card svg{width:100%;height:auto;}
+  .reel-card .reel-cap{
+    margin-top:14px;font-size:13.5px;color:var(--muted);text-align:center;
+  }
+
+  /* ---------- Section base ---------- */
+  section{padding:52px 0;}
+  section + section{border-top:1px solid var(--line);}
+  .sec-head{margin-bottom:26px;}
+  .sec-head h2{
+    font-size:clamp(20px,2.6vw,25px);font-weight:700;
+    letter-spacing:.4px;margin-bottom:8px;
+  }
+  .sec-head h2::before{
+    content:"";display:inline-block;width:6px;height:20px;
+    background:var(--gold);border-radius:3px;margin-right:10px;vertical-align:-2px;
+  }
+  .sec-head p{color:var(--muted);font-size:15px;max-width:46em;}
+
+  /* ---------- Search ---------- */
+  .search-bar{
+    display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;
+  }
+  .search-bar input{
+    flex:1 1 240px;min-width:0;
+    background:var(--panel);border:1px solid var(--line);
+    color:var(--text);border-radius:10px;padding:11px 14px;font-size:15px;
+    font-family:inherit;
+  }
+  .search-bar input::placeholder{color:#6d8299;}
+  .search-bar input:focus{outline:none;border-color:var(--gold);}
+  .search-bar button{
+    flex:none;background:var(--gold);color:#1a1206;border:none;
+    border-radius:10px;padding:11px 24px;font-size:15px;font-weight:600;
+    cursor:pointer;font-family:inherit;transition:.2s;
+  }
+  .search-bar button:hover{background:var(--gold-soft);}
+  .search-hint{margin-top:12px;font-size:14px;color:var(--muted);min-height:1.5em;}
+  .search-hint b{color:var(--gold);}
+
+  /* ---------- Category cards ---------- */
+  .cat-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:16px;
+  }
+  .cat-card{
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius);padding:20px 18px;transition:.2s;
+  }
+  .cat-card:hover{border-color:var(--gold);transform:translateY(-3px);}
+  .cat-card .ico{
+    width:38px;height:38px;border-radius:10px;
+    background:rgba(245,185,66,.12);
+    display:flex;align-items:center;justify-content:center;margin-bottom:12px;
+  }
+  .cat-card .ico svg{width:20px;height:20px;stroke:var(--gold);}
+  .cat-card h3{font-size:16px;font-weight:700;margin-bottom:6px;}
+  .cat-card p{font-size:14px;color:var(--muted);}
+  .cat-card .count{
+    display:inline-block;margin-top:10px;font-size:12.5px;
+    color:var(--teal);background:rgba(79,195,176,.1);
+    padding:2px 9px;border-radius:999px;
+  }
+
+  /* ---------- Movie list ---------- */
+  .movie-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    gap:18px;
+  }
+  .movie-card{
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;
+    transition:.2s;
+  }
+  .movie-card:hover{border-color:var(--gold);transform:translateY(-3px);}
+  .poster{
+    aspect-ratio:16/9;background:linear-gradient(135deg,#1b3149,#122032);
+    display:flex;align-items:center;justify-content:center;
+    border-bottom:1px solid var(--line);position:relative;
+  }
+  .poster svg{width:44px;height:44px;stroke:var(--gold);opacity:.85;}
+  .poster .tag{
+    position:absolute;top:10px;left:10px;
+    background:rgba(11,22,34,.82);color:var(--gold-soft);
+    font-size:12px;padding:2px 9px;border-radius:999px;border:1px solid rgba(245,185,66,.35);
+  }
+  .movie-body{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1;}
+  .movie-body h3{font-size:16px;font-weight:700;margin-bottom:6px;}
+  .movie-body p{font-size:13.5px;color:var(--muted);flex:1;}
+  .movie-meta{
+    display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;
+    font-size:12.5px;color:var(--teal);
+  }
+  .movie-meta span{background:rgba(79,195,176,.1);padding:2px 8px;border-radius:6px;}
+
+  /* ---------- Article / guide ---------- */
+  .guide-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:start;
+  }
+  .guide-text p{font-size:15.5px;color:#cfdbe7;margin-bottom:14px;}
+  .guide-text p strong{color:var(--gold-soft);font-weight:600;}
+  .steps{
+    list-style:none;counter-reset:step;display:flex;flex-direction:column;gap:14px;
+  }
+  .steps li{
+    counter-increment:step;position:relative;
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius);padding:16px 18px 16px 58px;
+    font-size:14.5px;color:#cfdbe7;
+  }
+  .steps li::before{
+    content:counter(step);
+    position:absolute;left:16px;top:16px;
+    width:26px;height:26px;border-radius:50%;
+    background:var(--gold);color:#1a1206;
+    font-weight:700;font-size:14px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .steps li b{color:var(--text);display:block;margin-bottom:2px;font-size:15px;}
+
+  /* ---------- Notice ---------- */
+  .notice{
+    background:var(--panel);border:1px solid var(--line);
+    border-left:4px solid var(--gold);
+    border-radius:var(--radius);padding:20px 22px;
+    font-size:14.5px;color:#cfdbe7;
+  }
+  .notice h2{font-size:18px;margin-bottom:10px;font-weight:700;}
+  .notice p + p{margin-top:10px;}
+
+  /* ---------- FAQ ---------- */
+  .faq{display:flex;flex-direction:column;gap:12px;}
+  .faq details{
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius);padding:14px 18px;
+  }
+  .faq summary{
+    cursor:pointer;font-weight:600;font-size:15.5px;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+  }
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{
+    content:"+";color:var(--gold);font-size:20px;font-weight:400;line-height:1;flex:none;
+  }
+  .faq details[open] summary::after{content:"–";}
+  .faq details p{margin-top:10px;font-size:14.5px;color:var(--muted);}
+
+  /* ---------- CTA band ---------- */
+  .cta-band{
+    background:linear-gradient(120deg,#152739,#0f1f2e);
+    border:1px solid var(--line);border-radius:18px;
+    padding:34px 28px;text-align:center;
+  }
+  .cta-band h2{font-size:clamp(20px,2.6vw,24px);margin-bottom:10px;font-weight:700;}
+  .cta-band p{color:var(--muted);font-size:15px;max-width:40em;margin:0 auto 22px;}
+  .cta-band .hero-actions{justify-content:center;}
+
+  /* ---------- Footer ---------- */
+  footer.site{
+    border-top:1px solid var(--line);background:var(--bg-soft);
+    padding:34px 0 28px;font-size:14px;color:var(--muted);
+  }
+  .foot-top{
+    display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
+    padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:18px;
+  }
+  .foot-brand{display:flex;align-items:center;gap:10px;color:var(--gold);font-weight:700;}
+  .foot-brand svg{width:28px;height:28px;}
+  .foot-links{display:flex;gap:18px;flex-wrap:wrap;}
+  .foot-links a:hover{color:var(--gold);}
+  .foot-bottom{font-size:13px;line-height:1.8;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:860px){
+    .hero-inner{grid-template-columns:1fr;padding:40px 0 38px;gap:26px;}
+    .hero-visual{order:2;}
+    .reel-card{max-width:100%;}
+    .guide-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:720px){
+    nav.mainnav{margin-left:0;width:100%;order:3;}
+    nav.mainnav ul{overflow-x:auto;padding-bottom:4px;flex-wrap:nowrap;}
+    nav.mainnav a{white-space:nowrap;background:var(--panel);}
+    .head-inner{padding:12px 0;}
+    section{padding:38px 0;}
+    .movie-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:520px){
+    body{font-size:15px;}
+    .movie-grid{grid-template-columns:1fr;}
+    .brand .brand-text{font-size:15px;}
+    .cta-band{padding:26px 18px;}
+    .btn{width:100%;justify-content:center;}
+    .hero-actions{flex-direction:column;}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap head-inner">
+    <div class="brand">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#0d1b2a"/>
+        <circle cx="32" cy="32" r="17" fill="none" stroke="#f5b942" stroke-width="3"/>
+        <circle cx="32" cy="32" r="5" fill="#f5b942"/>
+        <circle cx="32" cy="12" r="3.6" fill="#f5b942"/>
+        <circle cx="32" cy="52" r="3.6" fill="#f5b942"/>
+        <circle cx="12" cy="32" r="3.6" fill="#f5b942"/>
+        <circle cx="52" cy="32" r="3.6" fill="#f5b942"/>
+      </svg>
+      <span class="brand-text">电影天堂 在线免费观看</span>
+    </div>
+    <nav class="mainnav" aria-label="主导航">
+      <ul>
+        <li><a href="#find">快速找片</a></li>
+        <li><a href="#category">影片分类</a></li>
+        <li><a href="#hot">热门推荐</a></li>
+        <li><a href="#howto">观看流程</a></li>
+        <li><a href="#faq">常见问题</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-inner">
+      <div>
+        <h1 id="hero-title">电影天堂 在线免费观看</h1>
+        <p class="lead">想看的片名直接搜，按类型与热度浏览高清影片。电影天堂 在线免费观看把找片、选片、看片的路径压缩到几步之内，打开页面就能进入电影世界。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#find">立即找片</a>
+          <a class="btn btn-ghost" href="#category">浏览分类</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="reel-card">
+          <svg viewBox="0 0 260 150" role="img" aria-label="胶片与播放按钮的主题插画">
+            <defs>
+              <linearGradient id="scr" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#1d3a55"/>
+                <stop offset="1" stop-color="#122436"/>
+              </linearGradient>
+            </defs>
+            <rect x="16" y="18" width="228" height="114" rx="10" fill="url(#scr)" stroke="#2b445c"/>
+            <g fill="#0d1b2a" stroke="#2b445c">
+              <rect x="26" y="28" width="14" height="10" rx="2"/>
+              <rect x="26" y="48" width="14" height="10" rx="2"/>
+              <rect x="26" y="68" width="14" height="10" rx="2"/>
+              <rect x="26" y="88" width="14" height="10" rx="2"/>
+              <rect x="26" y="108" width="14" height="10" rx="2"/>
+              <rect x="220" y="28" width="14" height="10" rx="2"/>
+              <rect x="220" y="48" width="14" height="10" rx="2"/>
+              <rect x="220" y="68" width="14" height="10" rx="2"/>
+              <rect x="220" y="88" width="14" height="10" rx="2"/>
+              <rect x="220" y="108" width="14" height="10" rx="2"/>
+            </g>
+            <circle cx="130" cy="75" r="26" fill="none" stroke="#f5b942" stroke-width="3"/>
+            <path d="M122 63 L146 75 L122 87 Z" fill="#f5b942"/>
+          </svg>
+          <p class="reel-cap">高清片源 · 分类清晰 · 随时开看</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search -->
+  <section id="find" aria-labelledby="find-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="find-title">快速找片</h2>
+        <p>输入片名关键词即可在下方推荐列表中筛选，支持按中文名部分匹配。电影天堂 在线免费观看的推荐条目会随输入即时收敛，帮你更快定位目标影片。</p>
+      </div>
+      <form class="search-bar" id="searchForm" role="search" onsubmit="return false;">
+        <label for="searchInput" style="position:absolute;left:-9999px;">输入片名关键词</label>
+        <input id="searchInput" type="search" placeholder="例如：星际、无间、教父……" autocomplete="off">
+        <button type="button" id="searchBtn">搜索</button>
+      </form>
+      <p class="search-hint" id="searchHint" aria-live="polite">当前展示全部推荐影片，输入关键词可缩小范围。</p>
+    </div>
+  </section>
+
+  <!-- Category -->
+  <section id="category" aria-labelledby="cat-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="cat-title">影片分类</h2>
+        <p>按题材与观看习惯划分栏目，适合没有明确目标、只想随手挑一部片子的观众。分类入口覆盖电影天堂 在线免费观看常见的几类观影需求。</p>
+      </div>
+      <div class="cat-grid">
+        <article class="cat-card">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg>
+          </div>
+          <h3>科幻与冒险</h3>
+          <p>星空、未来世界与末日设定，适合追求视觉与想象力的观众。</p>
+          <span class="count">按人气排序</span>
+        </article>
+        <article class="cat-card">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a1 1 0 0 1 1-1h9l6 6v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M14 4v6h6"/></svg>
+          </div>
+          <h3>剧情与文艺</h3>
+          <p>人物命运与生活细节为主线，节奏舒缓，适合安静细看。</p>
+          <span class="count">口碑精选</span>
+        </article>
+        <article class="cat-card">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+          </div>
+          <h3>动作与犯罪</h3>
+          <p>追车、枪战与警匪对峙，紧张感强，适合一次看完。</p>
+          <span class="count">高热度</span>
+        </article>
+        <article class="cat-card">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+          </div>
+          <h3>动画与家庭</h3>
+          <p>适合与家人一起观看的轻松题材，画面友好，故事易懂。</p>
+          <span class="count">合家欢</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hot list -->
+  <section id="hot" aria-labelledby="hot-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="hot-title">热门推荐</h2>
+        <p>以下为影迷常搜的经典片目，列出片名、类型与看点，方便你判断是否合乎口味。电影天堂 在线免费观看的推荐区不追求堆量，只保留值得点开的选择。</p>
+      </div>
+      <div class="movie-grid" id="movieGrid">
+
+        <article class="movie-card" data-name="星际穿越 科幻 冒险">
+          <div class="poster">
+            <span class="tag">科幻</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+          </div>
+          <div class="movie-body">
+            <h3>星际穿越</h3>
+            <p>穿越虫洞寻找人类新家园，亲情线与宇宙尺度交织。</p>
+            <div class="movie-meta"><span>科幻</span><span>冒险</span><span>长片</span></div>
+          </div>
+        </article>
+
+        <article class="movie-card" data-name="无间道 犯罪 剧情">
+          <div class="poster">
+            <span class="tag">犯罪</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+          </div>
+          <div class="movie-body">
+            <h3>无间道</h3>
+            <p>警匪身份互换的经典叙事，台词与氛围至今仍被讨论。</p>
+            <div class="movie-meta"><span>犯罪</span><span>悬疑</span><span>港片</span></div>
+          </div>
+        </article>
+
+        <article class="movie-card" data-name="教父 剧情 黑帮">
+          <div class="poster">
+            <span class="tag">剧情</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+          </div>
+          <div class="movie-body">
+            <h3>教父</h3>
+            <p>家族权力更替的史诗，叙事沉稳，人物塑造耐看。</p>
+            <div class="movie-meta"><span>剧情</span><span>黑帮</span><span>经典</span></div>
+          </div>
+        </article>
+
+        <article class="movie-card" data-name="千与千寻 动画 家庭">
+          <div class="poster">
+            <span class="tag">动画</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+          </div>
+          <div class="movie-body">
+            <h3>千与千寻</h3>
+            <p>少女误入神灵世界的成长故事，画面与配乐都极具辨识度。</p>
+            <div class="movie-meta"><span>动画</span><span>家庭</span><span>治愈</span></div>
+          </div>
+        </article>
+
+        <article class="movie-card" data-name="盗梦空间 科幻 悬疑">
+          <div class="poster">
+            <span class="tag">悬疑</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+          </div>
+          <div class="movie-body">
+            <h3>盗梦空间</h3>
+            <p>层层梦境中的任务与心理博弈，结尾留白常被反复讨论。</p>
+            <div class="movie-meta"><span>科幻</span><span>悬疑</span><span>烧脑</span></div>
+          </div>
+        </article>
+
+        <article class="movie-card" data-name="霸王别姬 剧情 文艺">
+          <div class="poster">
+            <span class="tag">文艺</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>
+          </div>
+          <div class="movie-body">
+            <h3>霸王别姬</h3>
+            <p>戏班生涯与时代变迁交叠，人物命运与舞台互为映照。</p>
+            <div class="movie-meta"><span>剧情</span><span>文艺</span><span>华语</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How to -->
+  <section id="howto" aria-labelledby="howto-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="howto-title">观看流程</h2>
+        <p>从打开页面到开始播放，通常只需三步。下面把电影天堂 在线免费观看的使用顺序拆开说明，新访客照着做即可。</p>
+      </div>
+      <div class="guide-grid">
+        <div class="guide-text">
+          <p><strong>先确定看什么。</strong>有明确片名时，用上方的搜索框输入关键词，推荐列表会即时筛选；没有目标时，从影片分类里按题材挑一个方向，再回看推荐卡片的看点描述。</p>
+          <p><strong>再确认片目信息。</strong>每张卡片标注了类型与看点标签，先扫一眼标签是否合口味，再决定是否点开。标签并不是评分，而是帮助快速筛选的提示。</p>
+          <p><strong>最后进入播放。</strong>点击影片卡片进入对应页面即可开始观看。若页面暂时没有响应，可刷新后重试，或换一个网络环境。电影天堂 在线免费观看的推荐内容以静态列表直接呈现，不依赖登录即可浏览。</p>
+        </div>
+        <ol class="steps">
+          <li><b>搜索或浏览</b>输入片名关键词，或从分类卡片进入对应题材。</li>
+          <li><b>查看标签</b>对照类型与看点标签，判断是否符合当下心情。</li>
+          <li><b>点击播放</b>进入影片页面开始观看，遇到加载缓慢可稍作等待。</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notice -->
+  <section aria-labelledby="notice-title">
+    <div class="wrap">
+      <div class="notice">
+        <h2 id="notice-title">使用须知</h2>
+        <p>本站以影片信息聚合与找片引导为主，页面中的片名、类型与看点描述用于帮助观众选择，不构成对影片内容的完整介绍。</p>
+        <p>影片的可用状态与清晰度取决于片源方，页面展示的推荐条目不代表永久可用。若某部影片无法打开，建议优先尝试同类型的其他推荐。电影天堂 在线免费观看建议在稳定网络环境下观看，以获得更顺畅的播放体验。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="faq-title">常见问题</h2>
+        <p>整理访客在找片过程中最常提出的几个问题，答案围绕实际使用路径展开。</p>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>搜索不到想看的影片怎么办？</summary>
+          <p>可以尝试只输入片名中的两到三个字，或改用影片的常见别名。当前推荐区为精选列表，并非全量片库，未收录的影片暂不会出现在筛选结果中。</p>
+        </details>
+        <details>
+          <summary>观看需要注册或登录吗？</summary>
+          <p>浏览推荐、使用搜索与查看分类均不需要登录。电影天堂 在线免费观看的页面内容以静态方式呈现，打开即可阅读与筛选。</p>
+        </details>
+        <details>
+          <summary>为什么有的影片卡片点开后没有内容？</summary>
+          <p>影片能否播放取决于片源状态。遇到无响应时，可先刷新页面，或返回列表选择同类型的其他推荐影片。</p>
+        </details>
+        <details>
+          <summary>推荐区多久更新一次？</summary>
+          <p>推荐条目会根据影迷搜索热度与可看性调整，更新节奏不固定。建议收藏本页，下次直接从搜索框开始找片。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="cta-band">
+        <h2 id="cta-title">现在就开始找一部电影</h2>
+        <p>回到搜索框输入片名，或从分类里挑一个题材。电影天堂 在线免费观看把选片这件事做得更直接，省下翻找的时间留给观影本身。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#find">去搜索影片</a>
+          <a class="btn btn-ghost" href="#hot">看看热门推荐</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#0d1b2a"/>
+          <circle cx="32" cy="32" r="17" fill="none" stroke="#f5b942" stroke-width="3"/>
+          <circle cx="32" cy="32" r="5" fill="#f5b942"/>
+          <circle cx="32" cy="12" r="3.6" fill="#f5b942"/>
+          <circle cx="32" cy="52" r="3.6" fill="#f5b942"/>
+          <circle cx="12" cy="32" r="3.6" fill="#f5b942"/>
+          <circle cx="52" cy="32" r="3.6" fill="#f5b942"/>
+        </svg>
+        电影天堂 在线免费观看
+      </div>
+      <div class="foot-links">
+        <a href="#find">快速找片</a>
+        <a href="#category">影片分类</a>
+        <a href="#hot">热门推荐</a>
+        <a href="#howto">观看流程</a>
+        <a href="#faq">常见问题</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>电影天堂 在线免费观看是一个面向影迷的找片入口，提供分类浏览、片名搜索与热门影片推荐。页面中的影片信息用于辅助选择，播放可用性以片源方实际状态为准。</p>
+      <p style="margin-top:8px;">© 2024 电影天堂 在线免费观看 · 内容仅供观影参考</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('searchInput');
+  var btn = document.getElementById('searchBtn');
+  var hint = document.getElementById('searchHint');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#movieGrid .movie-card'));
+
+  function filter(){
+    var q = input.value.trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function(card){
+      var text = (card.getAttribute('data-name') + ' ' + card.textContent).toLowerCase();
+      var ok = q === '' || text.indexOf(q) !== -1;
+      card.style.display = ok ? '' : 'none';
+      if(ok) shown++;
+    });
+    if(q === ''){
+      hint.innerHTML = '当前展示全部推荐影片，输入关键词可缩小范围。';
+    } else if(shown === 0){
+      hint.innerHTML = '没有匹配 <b>' + escapeHtml(input.value.trim()) + '</b> 的推荐影片，试试更短的关键词或换个题材。';
+    } else {
+      hint.innerHTML = '找到 <b>' + shown + '</b> 部与“' + escapeHtml(input.value.trim()) + '”相关的推荐影片。';
+    }
+  }
+
+  function escapeHtml(s){
+    return s.replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  input.addEventListener('input', filter);
+  btn.addEventListener('click', filter);
+})();
+</script>
+
+</body>
+          </html>
