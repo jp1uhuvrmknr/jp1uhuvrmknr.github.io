@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>咕咕番-咕咕番在线观看_咕咕番动漫追番入口</title>
+<meta name="description" content="咕咕番是一个在线动漫追番入口，汇总新番更新、热门番剧与连载进度，提供清晰的分区浏览与播放页跳转，方便追番用户快速找到想看的动画。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141b2b'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23ff8a3d' stroke-width='4'/%3E%3Cpolygon points='27,22 45,32 27,42' fill='%23ffd166'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0e1420;
+    --bg-soft:#141b2b;
+    --card:#182134;
+    --line:rgba(255,255,255,.09);
+    --txt:#e8edf6;
+    --muted:#9aa8c0;
+    --accent:#ff8a3d;
+    --accent-2:#ffd166;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--txt);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{width:min(1120px,92vw);margin:0 auto;}
+
+  /* header */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(14,20,32,.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-bar{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:18px;padding:14px 0;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.22rem;letter-spacing:.5px;}
+  .brand svg{flex:none;}
+  nav.main ul{
+    display:flex;gap:22px;list-style:none;margin:0;padding:0;
+    font-size:.94rem;color:var(--muted);
+  }
+  nav.main a{padding:6px 2px;border-bottom:2px solid transparent;transition:.2s;}
+  nav.main a:hover{color:var(--txt);border-color:var(--accent);}
+  .nav-cta{
+    background:var(--accent);color:#1a1206;font-weight:700;
+    padding:9px 18px;border-radius:999px;font-size:.9rem;white-space:nowrap;
+  }
+  .nav-cta:hover{filter:brightness(1.08);}
+
+  /* hero */
+  .hero{
+    position:relative;overflow:hidden;
+    border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(700px 380px at 85% -10%,rgba(255,138,61,.22),transparent 70%),
+      radial-gradient(600px 360px at 5% 110%,rgba(255,209,102,.10),transparent 70%),
+      var(--bg-soft);
+  }
+  .hero-inner{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:44px;
+    align-items:center;padding:64px 0 60px;
+  }
+  .tagline{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.8rem;color:var(--accent-2);
+    border:1px solid rgba(255,209,102,.35);
+    padding:5px 12px;border-radius:999px;margin-bottom:18px;
+  }
+  .tagline .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);}
+  h1{
+    font-size:clamp(2.1rem,5vw,3.2rem);
+    line-height:1.18;margin:0 0 18px;letter-spacing:1px;
+  }
+  h1 span{color:var(--accent);}
+  .hero p.lead{color:var(--muted);font-size:1.02rem;margin:0 0 26px;max-width:34em;}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+  .btn-primary{
+    background:linear-gradient(135deg,var(--accent),#ffb35c);
+    color:#1a1206;font-weight:700;padding:12px 26px;border-radius:999px;
+    box-shadow:0 10px 26px rgba(255,138,61,.28);
+  }
+  .btn-primary:hover{filter:brightness(1.06);}
+  .btn-ghost{
+    border:1px solid var(--line);color:var(--txt);
+    padding:12px 24px;border-radius:999px;font-weight:600;
+  }
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+  .btn-download{
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px dashed rgba(255,255,255,.22);color:var(--muted);
+    padding:12px 24px;border-radius:999px;font-weight:600;
+    pointer-events:none;
+  }
+  .hero-stats{display:flex;gap:30px;margin-top:34px;flex-wrap:wrap;}
+  .hero-stats div strong{display:block;font-size:1.3rem;color:var(--accent-2);}
+  .hero-stats div span{font-size:.82rem;color:var(--muted);}
+
+  .hero-art{
+    background:linear-gradient(160deg,#1d2740,#121a29);
+    border:1px solid var(--line);border-radius:20px;
+    padding:20px;position:relative;
+  }
+  .hero-art .screen{
+    border-radius:12px;overflow:hidden;border:1px solid var(--line);
+    background:#0a0f18;
+  }
+  .hero-art .meta{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:14px;font-size:.84rem;color:var(--muted);
+  }
+  .hero-art .meta b{color:var(--txt);}
+  .pill{
+    font-size:.72rem;padding:3px 10px;border-radius:999px;
+    background:rgba(255,138,61,.16);color:var(--accent);border:1px solid rgba(255,138,61,.35);
+  }
+
+  /* sections common */
+  section{padding:64px 0;}
+  .sec-head{margin-bottom:30px;}
+  .sec-head .eyebrow{
+    font-size:.8rem;letter-spacing:2px;color:var(--accent);
+    text-transform:uppercase;font-weight:700;
+  }
+  .sec-head h2{font-size:clamp(1.4rem,2.6vw,1.85rem);margin:8px 0 10px;}
+  .sec-head p{color:var(--muted);margin:0;max-width:46em;font-size:.96rem;}
+
+  /* schedule */
+  #schedule{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .grid-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px;transition:.2s;
+  }
+  .card:hover{border-color:rgba(255,138,61,.5);transform:translateY(-3px);}
+  .card h3{font-size:1rem;margin:0 0 8px;}
+  .card p{font-size:.85rem;color:var(--muted);margin:0;}
+  .day{font-size:.74rem;color:var(--accent-2);letter-spacing:1px;margin-bottom:6px;display:block;}
+
+  /* hot list */
+  .hot-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .hot-item{
+    display:flex;gap:14px;align-items:flex-start;
+    background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:16px;
+  }
+  .rank{
+    flex:none;width:34px;height:34px;border-radius:9px;
+    display:grid;place-items:center;font-weight:800;font-size:.92rem;
+    background:rgba(255,209,102,.13);color:var(--accent-2);
+  }
+  .hot-item h3{font-size:.98rem;margin:0 0 6px;}
+  .hot-item p{font-size:.82rem;color:var(--muted);margin:0;}
+
+  /* intro text */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;}
+  .split h2{font-size:clamp(1.4rem,2.6vw,1.8rem);margin:0 0 16px;}
+  .split p{color:var(--muted);font-size:.96rem;margin:0 0 14px;}
+  .split strong{color:var(--txt);}
+  .feature-list{list-style:none;padding:0;margin:0;display:grid;gap:14px;}
+  .feature-list li{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;font-size:.9rem;color:var(--muted);
+  }
+  .feature-list b{display:block;color:var(--txt);font-size:.95rem;margin-bottom:4px;}
+
+  /* search */
+  .search-box{
+    display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;
+  }
+  .search-box input{
+    flex:1;min-width:200px;background:#0a0f18;border:1px solid var(--line);
+    color:var(--txt);border-radius:10px;padding:12px 16px;font-size:.95rem;
+    font-family:inherit;
+  }
+  .search-box input:focus{outline:none;border-color:var(--accent);}
+  .search-box button{
+    background:var(--accent);color:#1a1206;border:none;border-radius:10px;
+    padding:12px 24px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit;
+  }
+  .search-box button:hover{filter:brightness(1.08);}
+  #searchResult{font-size:.88rem;color:var(--accent-2);margin-top:12px;min-height:1.4em;}
+
+  /* faq */
+  .faq{display:grid;gap:12px;}
+  .faq details{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;
+  }
+  .faq summary{font-weight:600;cursor:pointer;font-size:.96rem;list-style:none;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::before{content:"＋";color:var(--accent);margin-right:8px;font-weight:700;}
+  .faq details[open] summary::before{content:"－";}
+  .faq p{color:var(--muted);font-size:.9rem;margin:12px 0 0;}
+
+  /* footer */
+  footer{
+    border-top:1px solid var(--line);background:var(--bg-soft);
+    padding:38px 0 30px;font-size:.86rem;color:var(--muted);
+  }
+  .foot-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:22px;}
+  .foot-brand{display:flex;align-items:center;gap:10px;color:var(--txt);font-weight:700;font-size:1.05rem;}
+  .foot-links{display:flex;gap:20px;flex-wrap:wrap;}
+  .foot-links a:hover{color:var(--accent);}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:18px;font-size:.8rem;line-height:1.9;}
+
+  @media (max-width:900px){
+    .hero-inner{grid-template-columns:1fr;padding:44px 0 40px;gap:30px;}
+    .grid-cards{grid-template-columns:repeat(2,1fr);}
+    .hot-list{grid-template-columns:1fr;}
+    .split{grid-template-columns:1fr;gap:28px;}
+    nav.main{display:none;}
+  }
+  @media (max-width:520px){
+    .grid-cards{grid-template-columns:1fr;}
+    .hero-actions .btn-primary,.hero-actions .btn-ghost,.hero-actions .btn-download{width:100%;justify-content:center;text-align:center;}
+    .hero-stats{gap:20px;}
+    .nav-cta{padding:8px 14px;font-size:.84rem;}
+    section{padding:48px 0;}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav-bar">
+    <a class="brand" href="#top" aria-label="咕咕番 首页">
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#141b2b"/>
+        <circle cx="32" cy="32" r="17" fill="none" stroke="#ff8a3d" stroke-width="4"/>
+        <polygon points="27,22 45,32 27,42" fill="#ffd166"/>
+      </svg>
+      咕咕番
+    </a>
+    <nav class="main" aria-label="主导航">
+      <ul>
+        <li><a href="#schedule">更新日历</a></li>
+        <li><a href="#hot">热门推荐</a></li>
+        <li><a href="#about">关于咕咕番</a></li>
+        <li><a href="#search">番剧检索</a></li>
+        <li><a href="#faq">常见问题</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="#search">开始追番</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="tagline"><span class="dot"></span>在线动漫追番入口</span>
+        <h1>咕咕番</h1>
+        <p class="lead">咕咕番把新番更新、热门番剧与连载进度放在同一个页面里，按照星期与热度分区浏览，减少在多个站点之间来回切换的时间。打开咕咕番，先看清本周更新，再决定今晚看什么。</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#schedule">查看本周更新</a>
+          <a class="btn-ghost" href="#hot">浏览热门番剧</a>
+          <a class="btn-download" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>7 天</strong><span>按星期排列更新</span></div>
+          <div><strong>4 类</strong><span>分区浏览入口</span></div>
+          <div><strong>1 页</strong><span>集中查看追番信息</span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="screen">
+          <svg viewBox="0 0 420 240" width="100%" height="auto" role="img" aria-label="追番播放界面示意插画">
+            <rect width="420" height="240" fill="#0a0f18"/>
+            <rect x="0" y="0" width="420" height="26" fill="#121a29"/>
+            <circle cx="16" cy="13" r="4" fill="#ff8a3d"/>
+            <circle cx="30" cy="13" r="4" fill="#ffd166"/>
+            <circle cx="44" cy="13" r="4" fill="#3d4c66"/>
+            <circle cx="210" cy="128" r="34" fill="none" stroke="#ff8a3d" stroke-width="3"/>
+            <polygon points="200,112 230,128 200,144" fill="#ffd166"/>
+            <rect x="60" y="196" width="300" height="6" rx="3" fill="#1e2a40"/>
+            <rect x="60" y="196" width="150" height="6" rx="3" fill="#ff8a3d"/>
+            <circle cx="210" cy="199" r="7" fill="#ffd166"/>
+            <text x="60" y="182" fill="#6f7f99" font-size="11" font-family="sans-serif">EP.08  正在播放</text>
+            <text x="336" y="182" fill="#6f7f99" font-size="11" font-family="sans-serif">24:00</text>
+          </svg>
+        </div>
+        <div class="meta">
+          <span>本周热门 · <b>连载中</b></span>
+          <span class="pill">更新至 08 话</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Weekly Schedule</span>
+        <h2>咕咕番更新日历</h2>
+        <p>按星期归类是本页最直接的入口。每个区块只放当天更新的番剧类别与观看提示，方便你在固定时间打开咕咕番，确认最新一话是否已经上线。</p>
+      </div>
+      <div class="grid-cards">
+        <article class="card">
+          <span class="day">周一 / 周二</span>
+          <h3>周末余温档</h3>
+          <p>承接上周末集中更新的长线番，适合补看错过的上一话，再决定是否继续追。</p>
+        </article>
+        <article class="card">
+          <span class="day">周三 / 周四</span>
+          <h3>日常与治愈</h3>
+          <p>节奏舒缓的日常系作品多集中在此，适合碎片时间观看，单集时长通常较短。</p>
+        </article>
+        <article class="card">
+          <span class="day">周五 / 周六</span>
+          <h3>新番主战场</h3>
+          <p>当季新作的主要更新时段，热门讨论度较高的番剧大多落在这两天，建议提前收藏。</p>
+        </article>
+        <article class="card">
+          <span class="day">周日</span>
+          <h3>汇总与补番</h3>
+          <p>本周更新基本齐全，适合一次性整理追番列表，把未看的话数补完。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="hot">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Trending</span>
+        <h2>本页热门番剧分区</h2>
+        <p>以下榜单按栏目展示不同类型的追番选择，排名仅表示本页内的推荐顺序，不涉及播放量统计。咕咕番的定位是帮助你在短时间内找到切入方向。</p>
+      </div>
+      <div class="hot-list">
+        <article class="hot-item">
+          <div class="rank">01</div>
+          <div>
+            <h3>长篇连载组</h3>
+            <p>话数多、世界观完整，适合愿意从头追起的观众，建议先看前几话判断风格。</p>
+          </div>
+        </article>
+        <article class="hot-item">
+          <div class="rank">02</div>
+          <div>
+            <h3>当季新作组</h3>
+            <p>本季开播作品，更新节奏稳定，适合边追边讨论，是咕咕番首页的主要更新来源。</p>
+          </div>
+        </article>
+        <article class="hot-item">
+          <div class="rank">03</div>
+          <div>
+            <h3>短篇完结组</h3>
+            <p>已完结或单季收尾的作品，无需等待更新，适合想一次性看完的观众。</p>
+          </div>
+        </article>
+        <article class="hot-item">
+          <div class="rank">04</div>
+          <div>
+            <h3>剧场与特别篇</h3>
+            <p>独立成篇的剧场版与特别篇，时间安排灵活，适合周末集中观看。</p>
+          </div>
+        </article>
+        <article class="hot-item">
+          <div class="rank">05</div>
+          <div>
+            <h3>轻改与漫改</h3>
+            <p>改编自轻小说或漫画的作品，原作读者可对照剧情进度选择观看起点。</p>
+          </div>
+        </article>
+        <article class="hot-item">
+          <div class="rank">06</div>
+          <div>
+            <h3>原创动画</h3>
+            <p>无原作依托，剧情走向难以预判，适合喜欢讨论与猜测后续发展的观众。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap split">
+      <div>
+        <h2>咕咕番是什么</h2>
+        <p><strong>咕咕番</strong>是一个面向追番用户的动漫入口页面，核心作用是汇总更新信息与番剧分类，让访问者在进入具体播放页之前，先掌握本周有哪些作品更新、哪些值得优先观看。</p>
+        <p>与单纯罗列链接的导航页不同，咕咕番把更新节奏作为组织线索：先按星期划分，再按作品类型归类，最后提供关键词检索。这样即使你只记得番剧名的一部分，也能在咕咕番里快速缩小范围。</p>
+        <p>页面内容以静态信息为主，更新日历与热门分区用于辅助判断，不替代播放页本身的功能。所有条目都指向实际内容，点击后进入对应页面继续操作。</p>
+      </div>
+      <ul class="feature-list">
+        <li><b>更新节奏清晰</b>按周一至周日排列，先看时间，再看内容，减少无效点击。</li>
+        <li><b>分区贴合追番习惯</b>长篇、新作、完结、剧场版四类划分，对应不同的观看安排。</li>
+        <li><b>检索直达</b>输入番剧名或关键词即可筛选本页条目，结果即时反馈。</li>
+        <li><b>移动端优先</b>手机首屏直接呈现主题文字与入口按钮，通勤路上也能快速浏览。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="search">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Search</span>
+        <h2>在咕咕番检索番剧</h2>
+        <p>输入番剧名称、类型或更新日，本页会即时筛选下方条目。检索只作用于当前页面已收录的内容，未命中的条目可回到更新日历中按星期查找。</p>
+      </div>
+      <div class="search-box">
+        <input id="kw" type="search" placeholder="例如：新作、周三、剧场版、长篇" aria-label="输入番剧关键词">
+        <button id="searchBtn" type="button">检索</button>
+      </div>
+      <p id="searchResult" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">FAQ</span>
+        <h2>关于咕咕番的常见问题</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>咕咕番是播放站还是导航页？</summary>
+          <p>咕咕番当前页面以信息汇总与入口跳转为主，提供更新日历、热门分区与检索功能，实际观看在点击条目后进入的对应页面完成。</p>
+        </details>
+        <details>
+          <summary>更新日历的时间是固定的吗？</summary>
+          <p>日历按星期归类，属于浏览组织方式。具体作品的更新时间可能因排期调整而变化，以条目指向页面的实际状态为准。</p>
+        </details>
+        <details>
+          <summary>为什么有的番剧在热门分区找不到？</summary>
+          <p>热门分区只呈现本页收录的部分类型，未列入的作品可以通过检索框查找，或按更新星期在日历中定位。</p>
+        </details>
+        <details>
+          <summary>下载按钮现在可以使用吗？</summary>
+          <p>下载入口尚未开放，按钮处于占位状态，后续替换为正式地址后会恢复可用。当前建议直接使用网页版浏览。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#141b2b"/>
+          <circle cx="32" cy="32" r="17" fill="none" stroke="#ff8a3d" stroke-width="4"/>
+          <polygon points="27,22 45,32 27,42" fill="#ffd166"/>
+        </svg>
+        咕咕番
+      </div>
+      <div class="foot-links">
+        <a href="#schedule">更新日历</a>
+        <a href="#hot">热门推荐</a>
+        <a href="#about">关于咕咕番</a>
+        <a href="#search">番剧检索</a>
+        <a href="#faq">常见问题</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      咕咕番是动漫追番信息入口，页面内容用于汇总更新节奏与番剧分类，帮助访问者快速定位想看的内容。页面内的排名与推荐顺序仅代表本页组织方式。
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('kw');
+  var btn = document.getElementById('searchBtn');
+  var out = document.getElementById('searchResult');
+  var items = Array.prototype.slice.call(document.querySelectorAll('.grid-cards .card, .hot-list .hot-item'));
+
+  function run(){
+    var q = (input.value || '').trim().toLowerCase();
+    if(!q){
+      items.forEach(function(el){ el.style.display = ''; });
+      out.textContent = '请输入关键词后再检索。';
+      return;
+    }
+    var hits = 0;
+    items.forEach(function(el){
+      var text = el.textContent.toLowerCase();
+      var match = text.indexOf(q) !== -1;
+      el.style.display = match ? '' : 'none';
+      if(match) hits++;
+    });
+    out.textContent = hits > 0
+      ? '找到 ' + hits + ' 条与「' + input.value.trim() + '」相关的条目。'
+      : '本页暂未收录与「' + input.value.trim() + '」匹配的条目，可尝试“新作”“周三”“剧场版”等词。';
+  }
+
+  btn.addEventListener('click', run);
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ e.preventDefault(); run(); }
+  });
+})();
+</script>
+</body>
+</html>
